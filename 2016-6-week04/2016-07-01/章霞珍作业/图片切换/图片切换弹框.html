@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ img{
+	 display:block;
+	 }
+</style>
+<script>
+window.onload=function(){
+//获取元素	
+	var top=document.getElementById('top');
+	var next=document.getElementById('next');
+	var img=document.getElementById('img');
+//把图片都存在imgArr的数组里面
+	var imgArr=['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg'];
+	var n=0;
+//当点击下一张按钮时
+	next.onclick=function(){
+//n等于一		
+		n++;
+//当下标数大于4，回到第一张
+		if(n>imgArr.length-1){
+			n=imgArr.length-1;
+		alert('当前是最后一张图片');
+		}
+			img.src=imgArr[n];
+	}
+//点击上一张按钮	
+	top.onclick=function(){
+		n--;
+//当n小于0时，数组长度减一
+		if(n<0){
+			n=0;
+		alert('当前是第一张图片');
+		}
+		img.src=imgArr[n];
+	}
+}
+</script>
+</head>
+
+<body>
+<input type="button" value="上一张" id="top"/>
+<input type="button" value="下一张" id="next"/>
+<img src="1.jpg" width="300" height="300" id="img"/>
+</body>
+</html>
