@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				display: block;
+			}
+		</style>
+		<script>
+			/*
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var next=document.getElementById('next');
+				var pic=document.getElementById('pic');
+				var imgArr=['asasdfasdf.jpg','asdqwrqwerqwer.jpg','cvbsrgwgw.jpg','ssbsdfgsfg.jpg'];
+				var n=0;
+				
+				//给按钮添加点击事件
+				next.onclick=function(){
+					n++;
+					
+					if(n>imgArr.length-1){
+						n=imgArr.length-1;
+					}
+					
+					pic.src='img/'+imgArr[n];
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="prev" value="上一张" />
+		<input type="button" id="next" value="下一张" />
+		<img id="pic" src="img/asasdfasdf.jpg"/>
+	</body>
+</html>
+
+
+
+
+

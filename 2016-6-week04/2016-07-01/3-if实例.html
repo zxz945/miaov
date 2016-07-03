@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+		<script>
+			/*
+			 * 
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var btn=document.getElementById('btn');
+				var box=document.getElementById('box');
+				
+				var on='block';		//声明一个变量用于做判断
+				btn.onclick=function(){
+					alert(on);
+					if(on=='block'){
+						box.style.display='none';
+						on='none';	//每次点击的时候改成对方（条件判断）的值
+					}else{
+						box.style.display='block';
+						on='block';	//每次点击的时候改成对方（条件判断）的值
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div id="box"></div>
+	</body>
+</html>
+	
+
+
+
+
+
+

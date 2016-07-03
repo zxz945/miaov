@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*#color>li:first-child{
+				background: red;
+			}
+			#color>li:nth-child(4){
+				background: yellow;
+			}*/
+		</style>
+		<script>
+			/*
+			 * querySelectorAll(css选择器)
+			 * 	能过css选择器去获取一组元素
+			 * 
+			 */
+			
+			window.onload=function(){
+				var lis=document.querySelectorAll('li');
+				var color=document.querySelector('#color');
+				
+				console.dir(lis);
+				
+				lis[lis.length-1].style.background='red';
+				
+				var lis1=color.querySelectorAll('li li');
+				
+				lis1[0].style.background='green';
+				console.dir(lis1);
+			};
+		</script>
+	</head>
+	<body>
+		<ul id="color" class="color">
+			<li>red</li>
+			<li class="green">green</li>
+			<li id="blue">blue</li>
+			<li>yellow</li>
+			<li class="green">
+				<ul>
+					<li>white</li>
+					<li>black</li>
+					<li>pink</li>
+					<li>orange</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="color">
+			<li>red</li>
+			<li class="green">green</li>
+			<li id="blue">blue</li>
+			<li class="green">yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>
