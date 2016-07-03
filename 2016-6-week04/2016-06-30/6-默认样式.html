@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html id="ht">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="bd">
+		<input type="button" id="btn" value="按钮" />
+		<div id="box" style="width: 100px;height: 100px;"></div>
+		<script>
+			var btn=document.getElementById('btn');
+			var box=document.getElementById("box");
+			var bd=document.getElementById("bd");
+			var ht=document.getElementById("ht");
+			
+			btn.onclick=function(){
+				alert(getComputedStyle(ht).background);
+			}
+		</script>
+	</body>
+</html>

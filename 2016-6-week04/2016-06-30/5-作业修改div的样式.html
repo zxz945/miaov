@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			position: relative;
+		}
+		p {
+			padding: 20px;
+			margin-right: 20px;
+		}
+		#box {
+			width: 100px;
+			height: 100px;
+			border: 5px solid black;
+			margin-left: 20px;
+		}
+		#mask {
+			position: fixed;
+			height:100%;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.4);
+			display: none;
+		}
+		#setting {
+			width: 350px;
+			height: 300px;
+			border: 10px solid gray;
+			background: white;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		.options {
+			padding: 20px;
+		}
+		.options span {
+			display: inline-block;
+			border: 1px solid black;
+			padding: 5px;
+			margin-left: 10px;
+			cursor: pointer;
+		}
+		#bgRed {
+			background: red;
+		}
+		#bgYellow {
+			background: yellow;
+		}
+		#bgGreen {
+			background: green;
+		}
+		.last {
+			text-align: center;
+		}
+	</style>
+	<script>
+		window.onload=function(){
+			var set=document.getElementById('set');
+			var mask=document.getElementById('mask');
+			var bgRed=document.getElementById('bgRed');
+			var box=document.getElementById('box');
+			var bgYellow=document.getElementById('bgYellow');
+			var bgGreen=document.getElementById('bgGreen');
+			var width200=document.getElementById('width200');
+			var width300=document.getElementById('width300');
+			var width400=document.getElementById('width400');
+			var height200=document.getElementById('height200');
+			var height300=document.getElementById('height300');
+			var height400=document.getElementById('height400');
+			var ok=document.getElementById('ok');
+			var reset=document.getElementById('reset');
+			
+			
+			set.onclick=function(){
+				//显示遮罩层
+				mask.style.display='block';
+				
+				//点击红色按钮
+				bgRed.onclick=function(){
+					box.style.background='red';
+				}
+				
+				//点击黄色按钮
+				bgYellow.onclick=function(){
+					box.style.background='yellow';
+				};
+				
+				//点击绿色按钮
+				bgGreen.onclick=function(){
+					box.style.background='green';
+				};
+				
+				//点击200按钮
+				width200.onclick=function(){
+					box.style.width='200px';
+				}
+				
+				//点击300按钮
+				width300.onclick=function(){
+					box.style.width='300px';
+				};
+				
+				//点击400按钮
+				width400.onclick=function(){
+					box.style.width='400px';
+				};
+				
+				//点击200高按钮
+				height200.onclick=function(){
+					box.style.height='200px';
+				};
+				
+				//点击300高的按钮
+				height300.onclick=function(){
+					box.style.height='300px';
+				}
+				
+				//点击400高的按钮
+				height400.onclick=function(){
+					box.style.height='400px';
+				}
+				
+				//点击确定按钮
+				ok.onclick=function(){
+					mask.style.display='none';
+				}
+				
+				//点击恢复按钮
+				reset.onclick=function(){
+					box.style.width='100px';
+					box.style.height='100px';
+					box.style.background='white';
+				}
+			};
+		}
+	</script>
+	</head>
+	<body>
+	<div id="mask">
+		<div id="setting">
+			<div class="options">
+				选择背景：
+				<span id="bgRed">红</span>
+				<span id="bgYellow">黄</span>
+				<span id="bgGreen">绿</span>
+			</div>
+			<div class="options">
+				选择宽度：
+				<span id="width200">200</span>
+				<span id="width300">300</span>
+				<span id="width400">400</span>
+			</div>
+			<div class="options">
+				选择高度：
+				<span id="height200">200</span>
+				<span id="height300">300</span>
+				<span id="height400">400</span>
+			</div>
+			<div class="options last">
+				<span id="reset">恢复</span>
+				<span id="ok">确定</span>
+			</div>
+		</div>
+	</div>
+	<p>请为下面的div设置样式：<input id="set" type="button" value="点击设置样式"></p>
+	<div id="box"></div>
+	</body>
+</html>
