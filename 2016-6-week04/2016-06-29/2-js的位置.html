@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			内嵌js
+			
+			特点：
+			页面加载慢
+			不利于复用
+		-->
+		<input type="button" id="box" value="按钮" />
+		<script>
+			document.getElementById('box').onclick=function(){
+				alert(1)
+			}
+		</script>
+	</body>
+</html>

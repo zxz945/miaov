@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--
+			需求：
+				点击页面中按钮，按钮背景色变为黄色
+				
+			分析
+				1、拿到按钮
+					document.getElementById('id名称');
+					document.getElementById('btn');
+					
+				2、点击
+					元素.onclick=function(){
+						点击要做的事情，要放到这里面
+						要做的事情：按钮背景色变为黄色
+						
+						
+						按钮背景色变为黄色（修改属性）
+						
+					}
+					
+					
+					修改属性
+						元素.style.background="yellow"
+						背景色
+		-->
+		
+		<input type="button" id="btn" style="background:red;" value="按钮" />
+		<script>
+			document.getElementById('btn').onclick=function(){
+				document.getElementById('btn').style.background='yellow';
+			}
+		</script>
+	</body>
+</html>
+
+
+
