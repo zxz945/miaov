@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+		<script>
+			/*
+			 * 
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var btn=document.getElementById('btn');
+				var box=document.getElementById('box');
+				
+				//box.style.display='block';
+				btn.onclick=function(){
+					//alert(box.style.display);
+					if(box.style.display=='none'){
+						//alert(1);
+						//这个条件成立说明box是显示状态
+						box.style.display='block';
+					}else{
+						//alert(2);
+						//走这里说明box是隐藏状态
+						box.style.display='none';
+					}
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<div id="box"></div>
+	</body>
+</html>
+	
+
+
+
+
+
+

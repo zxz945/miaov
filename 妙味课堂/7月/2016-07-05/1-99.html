@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById("box");
+				
+				var html='';
+				/*for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';
+				
+				for(var i=1;i<10;i++){
+					html+=i;
+				}
+				html+='<br>';*/
+				
+				/*
+				 * 外层的循环代表行数	i代表行数
+				 * 里层的循环代表1-9	j代表具体的数字
+				 * 
+				 * 外层走一次（创建一个行）之后，里面的j要创建9个数字（外面走一次，里面走9次）
+				 * 
+				 * 要做成阶梯状
+				 * 	外面的循环走到第几行的时候，创建几个数字
+				 * 	外面走第n次，里面走n次
+				 * 	外面循环到第几次，里面走几次
+				 */
+				
+				for(var i=1;i<10;i++){
+					/*
+					 * i=1		j=1		当i走第1次的时候，让里面循环1次
+					 * i=2		j=2		当i走第2次的时候，让里面循环2次
+					 * i=3		j=3		当i走第3次的时候，让里面循环3次
+					 * ...
+					 */
+					for(var j=1;j<=i;j++){
+						html+=j+'*'+i+'='+j*i+' ';
+					}
+					html+='<br>';
+				}
+				
+				box.innerHTML=html;
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<!--123456789
+			123456789
+			123456789
+			123456789
+			123456789
+			123456789
+			123456789
+			123456789
+			123456789-->
+			
+			<!--1
+			12
+			123
+			1234
+			12345
+			123456
+			1234567
+			12345678
+			123456789-->
+		</div>
+	</body>
+</html>

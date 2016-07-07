@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var box=document.getElementById("box");
+				document.getElementById('btn1').onclick=function(){
+					setStyle();
+				}
+				
+				
+				document.getElementById('btn2').onclick=function(){
+					setStyle();
+				}
+				
+				function setStyle(){
+					box.style.width='200px';
+					box.style.height='200px';
+					box.style.margin='10px';
+					box.style.padding='20px';
+					box.style.background='green';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn1" value="按钮1" />
+		<input type="button" id="btn2" value="按钮2" />
+		<div id="box"></div>
+	</body>
+</html>

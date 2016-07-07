@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<img id="img" src="1.jpg"/>
+		<a id="link" href="1-js的位置.html"></a>
+		<script>
+			/*
+			 * src取到的是图片的绝对地址，不是标签中输入的内容
+			 * href取到的是路径的绝对地址，不是标签中输入的内容
+			 * 
+			 * 不要用src以及href去做判断
+			 */
+			var img=document.getElementById('img');
+			var link=document.getElementById('link');
+			
+			
+			console.log(img.src);	//http://127.0.0.1:8020/2016-06-29JS%E7%8F%AD/1.jpg
+			console.log(link.href);	//http://127.0.0.1:8020/2016-06-29JS%E7%8F%AD/1-js%E7%9A%84%E4%BD%8D%E7%BD%AE.html
+		</script>
+	</body>
+</html>

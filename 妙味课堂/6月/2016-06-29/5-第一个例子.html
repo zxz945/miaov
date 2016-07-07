@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+			需求：点击页面中按钮，改变div的宽度
+			
+			分析
+				1、拿到按钮
+					document.getElementById('btn')
+				2、点击
+					元素.onclick=function(){
+						元素（div）.style.width='200px'
+					}
+					
+			css注释
+				/*这里放的是css的注释*/
+				
+			js注释
+				单行注释		//要注释的内容
+				多行注释		/*这里放的是js的多行注释*/
+		-->
+		
+		<input type="button" id="btn" value="按钮" />
+		<div id="box"></div>
+		<script>
+			//这里是注释
+			/*
+			 * 这里是多行注释
+			 */
+			document.getElementById('btn').onclick=function(){
+				document.getElementById('box').style.width='200px';
+			}
+		</script>
+	</body>
+</html>

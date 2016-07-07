@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>点击图片切换</title>
+<style>
+*{
+	padding:0;
+	margin:0;
+	}
+.box{
+	width:450px;
+	height:500px;
+	margin:20px auto;
+	text-align:center;
+	padding-top:7px;
+	border-top:1px solid #000;
+	}
+p{
+	margin:7px auto;
+	}
+.content{
+	position:relative;
+	width:400px;
+	height:400px;
+	margin:0 auto;
+	}
+.content img{
+	border: 8px solid #ccc;
+	}
+.content .top{
+	position:absolute;
+	top:2px;
+	left:8px;
+	width:400px;
+	height:32px;
+	text-align:center;
+	line-height:32px;
+	color:#FFF;
+	background:rgba(0,0,0,0.5);
+	}
+.content .bottom{
+	position:absolute;
+	bottom:-15px;
+	left:8px;
+	width:400px;
+	height:32px;
+	text-align:center;
+	line-height:32px;
+	color:#FFF;
+	background:rgba(0,0,0,0.5);
+	}
+.content .left{
+	position:absolute;
+	left:8px;
+	top:190px;
+	width:40px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	cursor:pointer;
+	background:rgba(255,255,255,0.5);
+	}
+.content .right{
+	position:absolute;
+	right:-8px;
+	top:190px;
+	width:40px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	cursor:pointer;
+	background:rgba(255,255,255,0.5);
+	}
+</style>
+<script>
+window.onload=function(){
+//获取元素
+	var btn_xh=document.getElementById('btn_xh');
+	var btn_sx=document.getElementById('btn_sx');
+	var left=document.getElementById('left');
+	var right=document.getElementById('right');
+	var wz_1=document.getElementById('wz_1');
+	var wz_2=document.getElementById('wz_2');
+	var nub=document.getElementById('nub');
+	var bot=document.getElementById('bot');
+	var n=0;
+	var imgArr=["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+	var nubArr=['1 / 5','2 / 5','3 / 5','4 / 5','5 / 5']
+	var botArr=['文字一','文字二','文字三','文字四','文字五']
+//点击左侧按钮
+	left.onclick=function(){
+		//下一张图片
+		n++;
+		//当n的数值大于图片的最后一个下标时
+		if(n>imgArr.length-1){
+			//显示最后一张图
+			n=imgArr.length-1;
+			//弹出已经是最后一张的提示
+			alert('已经是最后一张');
+			}
+			//获取图片的src
+			img.src=imgArr[n];
+			//数字组数的变化
+			nub.innerHTML=nubArr[n];
+			//图片文字的介绍
+			bot.innerHTML=botArr[n];
+	}
+	//点击图片的右侧按钮
+	right.onclick=function(){
+		//上一张图片
+		n--;
+		//如果当前图片数小于零
+		if(n<0){
+			//就让n等于0
+			n=0;
+			//弹出已经是第一张的提示
+			alert('已经是第一张');
+		}
+		//获取图片的src
+		img.src=imgArr[n];
+		//数字组数的变化
+		nub.innerHTML=nubArr[n];
+		//图片文字的介绍
+		bot.innerHTML=botArr[n];	
+	}
+	//点击按钮循环播放
+	btn_xh.onclick=function(){
+		//提示文字进行切换
+		wz_1.style.display='none';
+		wz_2.style.display='block';
+		//在循环的状态下，点击左侧按钮
+		left.onclick=function(){
+			//下一张图片
+			n++;
+			//当n的数值大于图片的最后一个下标时
+			if(n>imgArr.length-1){
+				//当前的图片回到第一张
+				n=0;
+				}
+				//获取图片的src
+				img.src=imgArr[n];
+				//数字组数的变化
+				nub.innerHTML=nubArr[n];
+				//图片文字的介绍
+				bot.innerHTML=botArr[n];
+			}
+		//点击图片的右侧按钮	
+		right.onclick=function(){
+			//上一张图片
+			n--;
+			//如果当前图片数小于零
+			if(n<0){
+				//回到最后一张图片
+				n=imgArr.length-1;
+				}
+				//获取图片的src
+				img.src=imgArr[n];
+				//数字组数的变化
+				nub.innerHTML=nubArr[n];
+				//图片文字的介绍
+				bot.innerHTML=botArr[n];
+			}
+	}
+	//点击顺序播放
+	btn_sx.onclick=function(){
+		//提示文字进行切换
+		wz_1.style.display='block';
+		wz_2.style.display='none';
+		//在顺序的状态下，点击左侧按钮
+		left.onclick=function(){
+			//下一张图片
+			n++;
+			if(n>imgArr.length-1){
+				n=imgArr.length-1;
+				alert('已经是最后一张图片');
+			}
+				img.src=imgArr[n];
+				nub.innerHTML=nubArr[n];
+				bot.innerHTML=botArr[n];
+		}
+		right.onclick=function(){
+			n--;
+			if(n<0){
+				n=0;
+				alert('已经是第一张图片');
+				}
+			img.src=imgArr[n];
+			nub.innerHTML=nubArr[n];
+			bot.innerHTML=botArr[n];
+		}
+	}
+}
+</script>
+</head>
+<body>
+<div class="box">
+<input type="button" value="循环切换" id="btn_xh"/>
+<input type="button" value="顺序切换" id="btn_sx"/>
+<p class="wz_1" style="display:none;" id="wz_1">图片只能到最后一张或只能到第一张切换</p>
+<p class="wz_2" style="display:block;" id="wz_2">图片可以从第一张到最后一张循环播放</p>
+<div class="content">
+  <img src="1.jpg" width="400" height="400" id="img"/>
+  <p class="top" id="nub">1 / 5</p>
+  <p class="bottom" id="bot">文字一</p>
+  <p class="left" id="left">></p>
+  <p class="right" id="right"><</p>
+</div>
+</div>
+</body>
+</html>

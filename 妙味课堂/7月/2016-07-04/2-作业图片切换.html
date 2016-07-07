@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#btn{
+				text-align: center;
+				padding: 20px 0;
+			}
+			#btn input{
+				width: 100px;
+				height: 30px;
+				background: #927878;
+				border: 1px solid #605656;
+				color: #fff;
+				font-size: 14px;
+				cursor: pointer;
+			}
+			#imgWrap{
+				width: 520px;
+				height: 280px;
+				margin: 0 auto;
+				border: 5px solid #ccc;
+				position: relative;
+				overflow: hidden;
+			}
+			#num{
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				color: #fff;
+				position: absolute;
+				top: 0;
+				z-index: 3;
+				width: 100%;
+				background: rgba(0,0,0,0.7);
+			}
+			#img{
+				position: absolute;
+				top: 0;
+			}
+			
+			#text{
+				height: 30px;
+				background: rgba(0,0,0,0.7);
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				text-align: center;
+				color: #fff;
+				line-height: 30px;
+			}
+			.changeBtn{
+				position: absolute;
+				top:50%;
+				margin-top: -15px;
+				width: 30px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				color: #fff;
+				text-decoration: none;
+				font-weight: bold;
+				background: rgba(0,0,0,0.7);
+			}
+			#prev{
+				left: 10px;
+			}
+			#next{
+				right: 10px;
+			}
+		</style>
+		<script>
+			/*
+			 * 需求：
+			 * 	1、左右箭头点击的时候，需要知道是循环还是顺序
+			 * 	2、点击的时候上面数字与下面文字都要变化
+			 * 
+			 * 分析：
+			 * 	1、点击右箭头图片会累加
+			 * 	2、点击左箭头图片会累减
+			 * 
+			 * 	
+			 */
+			
+			window.onload=function(){
+				var next=document.getElementById('next');
+				var prev=document.getElementById('prev');
+				var inputs=document.querySelectorAll('input');
+				var img=document.getElementById('img');
+				var num=document.getElementById('num');
+				var text=document.getElementById('text');
+				
+				var imgArr=['456fgf','34435','sadsd','sdbg','sdfsdfcc'];
+				var textArr=['明前茶上市','小s女儿同款','吃货福利一卡通','夏春新品','品牌团真材实木'];
+				
+				
+				var n=0;
+				
+				//这个变量代表了是顺序（true）还是循环（false）
+				var on=true;	//一下来默认为顺序切换
+				
+				//一上来要初始化一下
+				num.innerHTML=n+1+'/'+imgArr.length;	//修改数字
+				text.innerHTML=textArr[n];
+				
+				//顺序切换按钮
+				inputs[0].onclick=function(){
+					/*
+					 * 当顺序切换按钮点击的时候，说明要让效果为顺序切换
+					 * 决定哪种切换方式是有on的值来决定的
+					 * 只用把on的值变为true就可以了
+					 */
+					on=true;
+				}
+				
+				
+				//循环切换按钮
+				inputs[1].onclick=function(){
+					/*
+					 * 当循环切换按钮点击的时候，说明要让效果为循环切换
+					 * 决定哪种切换方法是有on的值来决定的
+					 * 只用把on的值变为false就可以了
+					 */
+					on=false;
+					
+				}
+				
+				
+				//点击右箭头
+				next.onclick=function(){
+					//alert(1);
+					//点击的时候，让n累加。到头的时候要判断是循环还是顺序
+					
+					n++;
+					
+					if(n>imgArr.length-1){
+						/*
+						 * 这个条件成立说明，图片已经切换到头了
+						 * 	要根据顺序还是循环决定下一张图片显示是哪个
+						 */
+						
+						if(on){
+							//这个条件成立，说明现在要做顺序切换，这个时候要让图片一直定格在最后一张
+							n=imgArr.length-1;
+						}else{
+							//这个条件成立，说明现在要做循环切换，这个时候要让图片回到第一张
+							n=0;
+						}
+					}
+					
+					img.src="img2/"+imgArr[n]+".jpg";
+					num.innerHTML=n+1+'/'+imgArr.length;	//修改数字
+					text.innerHTML=textArr[n];
+				};
+				
+				
+				//点击左箭头
+				prev.onclick=function(){
+					//alert(1);
+					//点击的时候，让n累加。到头的时候要判断是循环还是顺序
+					
+					n--;
+					
+					if(n<0){
+						/*
+						 * 这个条件成立说明，图片已经切换到头了
+						 * 	要根据顺序还是循环决定下一张图片显示是哪个
+						 */
+						
+						if(on){
+							//这个条件成立，说明现在要做顺序切换，这个时候要让图片一直定格在第一张
+							n=0;
+						}else{
+							//这个条件成立，说明现在要做循环切换，这个时候要让图片回到最后一张
+							n=imgArr.length-1;
+						}
+					}
+					img.src="img2/"+imgArr[n]+".jpg";
+					num.innerHTML=n+1+'/'+imgArr.length;	//修改数字
+					text.innerHTML=textArr[n];
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<div id="btn">
+			<input type="button" id="btn1" value="顺序切换" />
+			<input type="button" id="btn2" value="循环切换" />
+		</div>
+		<div id="imgWrap">
+			<div id="num"></div>
+			<img id="img" src="img2/456fgf.jpg"/>
+			<a href="javascript:;" id="prev" class="changeBtn"><</a>
+			<a href="javascript:;" id="next" class="changeBtn">></a>
+			<div id="text"></div>
+		</div>
+	</body>
+</html>

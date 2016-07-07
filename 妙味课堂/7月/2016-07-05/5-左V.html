@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				position: relative;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: #f00;
+				color: #fff;
+				text-align: center;
+				line-height: 50px;
+				font-size: 20px;
+				font-weight: bold;
+				position: absolute;
+			}
+		</style>
+		<script>
+			/*
+			 * 0	l=0		left:0		top:0
+			 * 1	l=1		left:50		top:50
+			 * 2	l=2		left:100	top:100
+			 * 3	l=1		left:50		top:150
+			 * 4	l=0		left:0		top:200
+			 */
+			window.onload=function(){
+				var box=document.getElementById('box');
+				var html='';
+				
+				var total=7;
+				
+				var l=-1;
+				var t=0;
+				/**/
+				for(var i=0;i<total;i++){
+					t=i;
+					if(i<total/2){
+						l++;	//2 1 0
+					}else{
+						l--;	//1 2
+					}
+					
+					
+					html+='<div style="left:'+l*50+'px;top:'+t*50+'px"></div>';
+				}
+				
+				box.innerHTML=html;
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="生成v字型" />
+		<div id="box">
+			<!--上-->
+			<!--<div style="left: 0;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top:100px;">2</div>
+			<div style="left: 150px;top: 50px;">3</div>
+			<div style="left: 200px;top:0">4</div>-->
+			
+			
+			<!--下-->
+			<!--<div style="left: 0;top: 100px;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top: 0px;">2</div>
+			<div style="left: 150px;top: 50px;">3</div>
+			<div style="left: 200px;top: 100px">4</div>-->
+			
+			<!--左-->
+			<!--<div style="left: 0;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top: 100px;">2</div>
+			<div style="left: 50px;top: 150px;">3</div>
+			<div style="left: 0px;top: 200px">4</div>-->
+			
+			<!--右-->
+			<!--<div style="left: 100px;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 0px;top: 100px;">2</div>
+			<div style="left: 50px;top: 150px;">3</div>
+			<div style="left: 100px;top:200px">4</div>-->
+		</div>
+	</body>
+</html>
+

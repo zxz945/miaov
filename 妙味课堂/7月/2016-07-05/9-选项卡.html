@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			div{
+				width: 200px;
+				height: 200px;
+				border: 1px solid #f00;
+				display: none;
+			}
+		</style>
+		<script>
+			/*
+			 * 需求：
+			 * 	点击按钮显示对应的div，其它的div隐藏
+			 * 
+			 * 关键点：
+			 * 	需要找到上一个点击的对象
+			 * 
+			 * 分析：
+			 * 	1、获取按钮与div
+			 * 	2、给按钮添加点击事件
+			 * 		1、把上一个按钮的背景色去掉
+			 * 		2、把上一个按钮对应的div隐藏
+			 * 		3、给当前的按钮添加背景色
+			 * 		4、让当前对应的div显示
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var inputs=document.querySelectorAll("input");
+				console.dir(inputs);
+				var divs=document.querySelectorAll("div");
+				
+				var last=inputs[0];	//代表上一个点击对象,在一开始的时候默认为第1个按钮
+				
+				//给所有的input添加点击事件
+				for(var i=0;i<inputs.length;i++){
+					/*inputs[0].index=0;
+					inputs[1].index=1;
+					inputs[2].index=2;*/
+					
+					inputs[i].index=i;	//给每一个input添加一个自定义属性，这个属性对应每个按钮的下标值
+					inputs[i].onclick=function(){
+						//找到上一个点击的对象，去掉它的背景色
+						last.style.background='';
+						
+						//this.index	点击的那个对象对应的索引值
+						//让上一个对应的div隐藏
+						divs[last.index].style.display='none';
+						
+						
+						//让当前点击的按钮添加背景色
+						this.style.background='yellow';
+						divs[this.index].style.display='block';
+						
+						
+						last=this;	//在最后要更新一下上一次点击的对象
+						//alert(last.index+' || '+this.index)
+					};
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="" value="选项一" style="background: yellow;" />
+		<input type="button" id="" value="选项二" />
+		<input type="button" id="" value="选项三" />
+		<div style="display: block;">内容一</div>
+		<div>内容二</div>
+		<div>内容三</div>
+	</body>
+</html>

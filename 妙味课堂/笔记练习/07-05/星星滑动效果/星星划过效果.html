@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>星星划过的效果</title>
+<style>
+ *{
+	 padding:0;
+	 margin:0;
+	 text-align:left;
+	 }
+  ul{
+	  width:700px;
+	  height:65px;
+		 }
+  li{
+	  list-style:none;
+	  float:left;
+	  }
+  #text{
+	  display:none;
+	  }
+li img{
+	display:inline-block;
+	width:60px;
+	height:60px;
+	}
+#tips{
+	width:292px;
+	height:48px;
+	background:url(img/tips.jpg) no-repeat;
+	}
+</style>
+<script>
+function tipInfoByIndex(idx){
+	var msg=""
+	if(idx<0){
+		msg=""
+	}else if(idx<2){
+		msg="较差"
+	}else if(idx<4){
+		msg="一般"
+	}else{
+		msg="优秀"
+	}
+	document.getElementById("text").innerHTML=msg;
+}
+
+window.onload=function(){
+	//获取页面元素
+	var imgs=document.querySelectorAll('img');
+	var text=document.getElementById('text');
+	var tips=document.getElementById('tips');
+	var oUl=document.getElementById('ul');
+	//点击的星星的下标
+	var clickIndex= -1;
+	//循环图片，对每个图片事件进行绑定
+	for(var i=0;i<imgs.length;i++){
+	//记录当前图片的下标等于i
+		imgs[i].index=i;
+	//当图片被点击时记录被点击的位置
+		imgs[i].onclick=function(){
+			clickIndex=this.index;
+		}
+		//图片移入显示相应的星星颜色
+		imgs[i].onmouseover=function(){
+			tips.style.display='none';
+			text.style.display='block';
+			//重置所有的星星图片颜色为默认状态
+			for(var j=0;j<imgs.length;j++){
+				imgs[j].src="img/grey.jpg";
+			}
+			if(this.index<2){
+				//当图片为前2张时，显示蓝色图片
+				for(var j=0;j<=this.index;j++){
+					imgs[j].src="img/blue.jpg";
+				}
+			}else{
+				//当图片的下标大于2是，图片颜色为黄色
+				for(var j=0;j<=this.index;j++){
+					imgs[j].src="img/yellow.jpg";
+					console.log(j);
+				}
+			}
+			//根据图片的下标，显示相关提示文字
+			tipInfoByIndex(this.index)
+		};
+		
+	};
+	//当鼠标移出
+	oUl.onmouseout=function(){
+		if(clickIndex>0){
+			//当存在点击事件时，显示文字，隐藏提示图片
+			tips.style.display='none';
+			text.style.display='block';
+		}else{
+			//不存在点击事件，显示图片，隐藏提示文字
+			tips.style.display='block';
+			text.style.display='none';
+		}
+		//重置图片颜色为默认颜色
+		for(var j=0;j<imgs.length;j++){
+			imgs[j].src="img/grey.jpg";
+		}
+		//点击图片默认颜色为蓝色
+		var img = "img/blue.jpg";
+		//当点击图片超过第二张时，显示黄色
+		if(clickIndex>=2){
+			img = "img/yellow.jpg";
+		}
+		//选中图片，逐个进行颜色赋值
+		for(var i=0;i<=clickIndex;i++){
+			imgs[i].src=img;
+		}
+		//根据图片的下标，显示相关提示文字
+		tipInfoByIndex(clickIndex)
+			
+	};
+};
+</script>
+</head>
+<body>
+<div style="margin:30px 30px;">
+<h3 style="display:inline-block;float:left;">总体评价：</h3>
+<ul style="display:block;" id="ul">
+    <li><img src="img/grey.jpg" width="60" height="60" /></li>
+    <li><img src="img/grey.jpg" width="60" height="60" /></li>
+    <li><img src="img/grey.jpg" width="60" height="60" /></li>
+    <li><img src="img/grey.jpg" width="60" height="60" /></li>
+    <li><img src="img/grey.jpg" width="60" height="60" /></li>
+</ul>
+<p id="text" style="margin-left:103px;">较差</p>
+<p style="margin-left:103px;" id="tips"></p>
+</div>
+</body>
+</html>

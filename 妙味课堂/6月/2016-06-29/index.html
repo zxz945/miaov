@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+		<script>
+			/*
+			 * class
+			 * 	class是保留字，不能直接取
+			 * 	获取class的时候，用className
+			 */
+			
+			window.onload=function(){
+				var btn=document.getElementById("btn");
+				var box=document.getElementById("box");
+				
+				btn.onclick=function(){
+					console.log(box.innerHTML);
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="按钮" id="btn" />
+		<div id="box"><p>标题</p>sdfasdfasd345345345</div>
+	</body>
+</html>

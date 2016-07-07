@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style>
+div{
+	width:100px;
+	height:100px;
+	border:1px solid #000;
+	
+	}
+</style>
+<script>
+window.onload=function(){
+	//用getElementsByTagName获取页面上的元素
+	var btn=document.getElementsByTagName('input');
+	var div=document.getElementsByTagName('div');
+	//当具体到哪个元素要发生事的，时候需要在中括号里面写上长度
+	btn[0].onclick=function(){
+		if(div[0].style.display=='block'){
+			div[0].style.display='none';
+			}else{
+				div[0].style.display='block';
+				}
+		}
+	}
+</script>
+</head>
+
+<body>
+<input type="button" value="按钮"/>
+<div style="display:block;"></div>
+</body>
+</html>

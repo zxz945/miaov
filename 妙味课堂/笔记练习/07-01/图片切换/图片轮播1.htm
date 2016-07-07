@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script>
+ window.onload=function(){
+	 var top=document.getElementById('top');
+	 var next=document.getElementById('next');
+	 var img=document.getElementById('img');
+	 var n=1;
+	 next.onclick=function(){
+		 n++;
+		 if(n>5){
+			 n=5;
+			 alert('当前图片是最后一张');
+			 }
+			img.src=n+'.jpg';
+		 }
+	  top.onclick=function(){
+		  n--;
+		  if(n<1){
+			  n=1;
+			  alert('当前图片是第一张');
+			  }
+			  img.src=n+'.jpg';
+		  }
+	 }
+</script>
+</head>
+
+<body>
+<input type="button" value="上一张" id="top"/>
+<input type="button" value="下一张" id="next"/>
+<img src="1.jpg" width="300" height="300" id="img" style="display:block;"/>
+</body>
+</html>

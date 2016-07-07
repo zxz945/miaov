@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<script>
+			/*
+			 * this
+			 * 	指的是当前对象
+			 * 	关键词，不能当作变量名
+			 * 	只能读，不能写。只能用它的值，不能修改它的值
+			 * 
+			 * 1、在函数外
+			 * 		this指向window
+			 * 2、在函数内
+			 * 		1、函数是直接调用
+			 * 			this指向window
+			 * 		2、被事件调用，并且是以赋值的方式出现
+			 * 			谁调用了就指向谁
+			 */
+			//alert(this);	//window
+			
+			//alert(this==window);	//true,这个时候this指向window
+			
+			function fn(){
+				alert(this);
+			}
+			
+			fn();	//window
+			
+			
+			//document.onclick=fn;	//document
+			
+			
+			var btn=document.getElementById('btn');
+			
+			//btn.onclick=fn;	//input
+			
+			btn.onclick=function(){
+				fn();	//window
+			}
+		</script>
+		
+		
+	</body>
+</html>

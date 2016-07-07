@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#list{
+				width: 200px;
+				height: 300px;
+				border: 1px solid #f00;
+			}
+		</style>
+		<script>
+			/*
+			 * 需求：点击按钮获取输入框的内容添加到UL里
+			 * 
+			 * 分析：
+			 * 	1、获取按钮、输入框、ul
+			 * 	2、给按钮添加点击事件
+			 * 		1、获取text的value值
+			 * 		2、将value值添加到ul里
+			 * 
+			 * 字符串连接
+			 * 	用加号去拼接字符串与变量
+			 * 
+			 * innerHTML
+			 * 	它可以赋值，如果给他赋的值里面有html标签,浏览器会自动把它解析成真正html标签
+			 * 	它的作用是，先拿到原来的内容，然后清空，接下来再把新的内容添加到指定的标签里面（先清空再添加）
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var btn=document.getElementById('btn');
+				var text=document.getElementById('inputText');
+				var ul=document.getElementById('list');
+				
+				//给按钮添加点击事件
+				btn.onclick=function(){
+					var val=text.value;
+					
+					//console.log(val);
+					//创建一个li标签，并把输入的内容添加到创建的标签里
+					var li='<li>'+val+'</li>';
+					
+					//把li标签添加到ul里
+					
+					//ul.innerHTML	原来的内容
+					//拿到原来的内容，再加上新的内容，拼起来就是所有的内容
+					//ul.innerHTML=ul.innerHTML+li;	//新输入的内容在后面
+					
+					ul.innerHTML+=li;	//+= 是上面表达式的简写
+				
+					//ul.innerHTML=li+ul.innerHTML;	//新输入的内容在前面
+					
+					console.log(li);
+				};
+			};
+			
+		</script>
+	</head>
+	<body>
+		<input type="text" id="inputText" value="" />
+		<input type="button" id="btn" value="提交" />
+		<ul id="list">
+			<!--
+				这里需要三个步骤
+					1、创建一个li标签
+					2、把输入的内容添加到li标签里
+					3、把li标签添加到ul里
+			-->
+			<!--<li>夺村地顶替</li>
+			<li>苦基本原则苛夺苛夺</li>-->
+		</ul>
+	</body>
+</html>

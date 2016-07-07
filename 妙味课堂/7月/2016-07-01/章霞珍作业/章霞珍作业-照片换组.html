@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ *{
+	 margin:0 auto;
+	 padding:0;
+	 text-align:center;
+	 }
+.box{
+	position:relative;
+	width:810px;
+	height:420px;
+	background:#CCC;
+	margin:10px auto;
+	padding:20px 20px;
+	}
+.box div{
+	display:inline-block;
+	float:left;
+	}
+.left{
+	margin-right:10px;
+	}
+input{
+	margin-top:30px;
+	}
+.left .wz{
+	position:absolute;
+	bottom:80px;
+	left:181px;
+	color:#FFF;
+	}
+.left .sz{
+	position:absolute;
+	bottom:16px;
+	left:20px;
+	color:#FFF;
+	}
+.right .wz{
+	position:absolute;
+	bottom:80px;
+	right:159px;
+	color:#FFF;
+	}
+.right .sz{
+	position:absolute;
+	bottom:16px;
+	right:20px;
+	color:#FFF;
+	}
+</style>
+<script>
+ window.onload=function(){
+	 var up=document.getElementById('up');
+	 var down=document.getElementById('down');
+	 var img_1=document.getElementById('img_1');
+	 var img_2=document.getElementById('img_2');
+	 var sz_1=document.getElementById('sz_1');
+	 var wz_1=document.getElementById('wz_1');
+	 var wz_2=document.getElementById('wz_2');
+	 var sz_2=document.getElementById('sz_2');
+	 var sz_1Arr=['1/4','2/4','3/4','4/4']
+	 var sz_2Arr=['1/4','2/4','3/4','4/4'];
+	 var wz_1Arr=['第一组第1张','第一组第2张','第一组第3张','第一组第4张']
+	 var wz_2Arr=['第二组第1张','第二组第2张','第二组第3张','第二组第4张']
+	 var img_1Arr=['1.jpg','2.jpg','3.jpg','4.jpg'];
+	 var img_2Arr=['5.jpg','6.jpg','7.jpg','8.jpg'];
+	 var n=0;
+	 var m=0;
+//左边设置的下一组的函数
+	 function set(){
+		 n++;
+		 if(n>img_1Arr.length-1){
+			 n=0;
+		 }
+		img_1.src=img_1Arr[n];
+		wz_1.innerHTML=wz_1Arr[n];
+		sz_1.innerHTML=sz_1Arr[n];
+	 }
+//右边设置下一组的函数
+	 function set2(){
+		 m++;
+		 if(m>img_2Arr.length-1){
+			 m=0;
+		 }
+		img_2.src=img_2Arr[m];
+		wz_2.innerHTML=wz_2Arr[m];
+		sz_2.innerHTML=sz_2Arr[m];
+	 }
+//左边设置上一组函数
+	 function set_1(){
+		 n--;
+		 if(n<0){
+			 n=img_1Arr.length-1;
+		 }
+		 img_1.src=img_1Arr[n];
+		 wz_1.innerHTML=wz_1Arr[n];
+		 sz_1.innerHTML=sz_1Arr[n];
+		 }
+//右边设置上一组函数
+	 function set_2(){
+		 m--;
+		 if(m<0){
+			 m=img_1Arr.length-1;
+		 }
+		img_2.src=img_2Arr[m];
+		wz_2.innerHTML=wz_2Arr[m];
+		sz_2.innerHTML=sz_2Arr[m];
+	 }
+	 
+//点击页面的图片跳转到下一张图片
+	 img_1.onclick=function(){
+		 set();
+		 }
+	 img_2.onclick=function(){
+		 set2();
+		 }
+//点击下一组，调函数
+	 down.onclick=function(){
+		set();
+		set2();
+	 }
+//点击上一组
+	 up.onclick=function(){
+		 set_1();
+		 set_2();
+     }
+}
+</script>
+</head>
+<body>
+<input type="button" value="上一组" id="up"/>
+<input type="button" value="下一组" id="down"/>
+<div class="box">
+	<div class="left">
+    	<img src="1.jpg" width="400" height="400" id="img_1"/>
+        <p class="wz" id="wz_1">第一组第一张</p>
+        <p class="sz" id="sz_1">1/4</p>
+    </div>
+    <div class="right">
+    	<img src="5.jpg" width="400" height="400" id="img_2"/>
+        <p class="wz" id="wz_2">第二组第一张</p>
+        <p class="sz" id="sz_2">1/4</p>
+    </div>
+</div>
+</body>
+</html>

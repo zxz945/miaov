@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<style>
+		#list{margin-top:20px; position:relative;}
+		li{color:white; font-size:20px; text-align:center; line-height:50px; width:50px; height:50px; position:absolute; list-style:none;}
+	</style>
+	<script>
+		window.onload = function(){
+			var btn = document.getElementById("btn");
+			var list = document.getElementById("list");
+			var oLi = list.getElementsByTagName("li");
+			var off = true;
+			var leng = 11;
+			var num = 1;
+			btn.onclick = function(){
+				if(off){
+					for(var i = 0; i < leng; i++){
+						list.innerHTML += "<li>" + i + "</li>";
+					}
+					if(num == 1){
+						num = 2;
+						for(var i = 0; i < leng; i++){
+							oLi[i].style.left = 10 + i*60 + "px";
+							oLi[i].style.background = "red";
+							if(i < leng/2){
+								oLi[i].style.top = i*60 + "px";
+							}else{
+								oLi[i].style.top = (leng - i -1) *60 + "px";
+							}
+						}
+					}else if(num == 2){
+						num = 3;
+						for(var i = 0; i < leng; i++){
+							oLi[i].style.top = i*60 + "px";
+							oLi[i].style.background = "red";
+							if(i < leng/2){
+								oLi[i].style.left = 10 + i*60 + "px";
+							}else{
+								oLi[i].style.left = (leng - i -1) *60 + "px";
+							}
+						}
+					}else if(num == 3){
+						num = 4;
+						for(var i = 0; i < leng; i++){
+							oLi[i].style.top = i*60 + "px";
+							oLi[i].style.background = "red";
+							if(i < leng/2){
+								oLi[i].style.left = 10 + Math.floor(leng/2-i) *60 + "px";
+							}else{
+								oLi[i].style.left = Math.floor(i - leng/2 +1) *60 + "px";
+							}
+						}
+					}else if(num == 4){
+						num = 5;
+						for(var i = 0; i < leng; i++){
+							oLi[i].style.top = i*60 + "px";
+							oLi[i].style.left = "auto";
+							oLi[i].style.background = "red";
+							if(i < leng/2){
+								oLi[i].style.right = 10 + i*60 + "px";
+							}else{
+								oLi[i].style.right = (leng - i -1) *60 + "px";
+							}
+						}
+					}else if(num == 5){
+						off = false;
+						for(var i = 0; i < leng; i++){
+							oLi[i].style.top = i*60 + "px";
+							oLi[i].style.left = "auto";
+							oLi[i].style.background = "red";
+							if(i < leng/2){
+								oLi[i].style.right = 10 + Math.floor(leng/2-i) *60  + "px";
+							}else{
+								oLi[i].style.right = Math.floor(i - leng/2 +1) *60+ "px";
+							}
+						}
+					}
+
+				}
+			}
+		}
+	</script>
+
+</head>
+<body>
+	<input type="button" id="btn" value="点击生成V" />
+	<ul id="list"></ul>
+</body>
+</html>

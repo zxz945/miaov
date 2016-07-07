@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 属性
+			 * 	1、系统自带的
+			 * 		style、class、id、value、src、type
+			 * 	2、我们自己给的
+			 * 		这个属性系统是没有的
+			 * 		系统自带的有的时候满足不了我们的需求，要给一个自己定义的属性
+			 */
+			
+			window.onload=function(){
+				var btn=document.getElementById('btn');
+				
+				console.log(btn.type);	//button
+				console.log(btn.value);	//按钮
+				
+				
+				btn.miaov='妙味';	//自定义属性，相当于系统自带的，可以用系统的操作属性的方法去操作它
+				
+				console.log(btn.miaov);		//妙味
+				console.log(btn['miaov']);	//妙味
+			};
+		</script>
+		<input type="button" id="btn" value="按钮" />
+	</body>
+</html>

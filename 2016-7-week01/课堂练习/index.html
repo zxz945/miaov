@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box{
+            position: relative;
+        }
+        #box div{
+            width: 50px;
+            height: 50px;
+            background: #f00;
+            color: #fff;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            position: absolute;
+        }
+    </style>
+    <script>
+        /*
+         * 0	t=2		left:0		top:100
+         * 1	t=1		left:50		top:50
+         * 2	t=0		left:100	top:0
+         * 3	t=1		left:150	top:50
+         * 4	t=2		left:200	top:100
+         */
+        window.onload=function(){
+            var box=document.getElementById('box');
+            var html='';
+
+            var total=7;
+
+            var l=0;
+            var t=Math.ceil(total/2);
+
+            /**/
+            for(var i=0;i<total;i++){
+                l=i;
+                if(i<total/2){
+                    t--;	//2 1 0
+                }else{
+                    t++;	//1 2
+                }
+
+
+                html+='<div style="left:'+l*50+'px;top:'+t*50+'px"></div>';
+            }
+
+            box.innerHTML=html;
+        };
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="生成v字型" />
+<div id="box">
+    <!--上-->
+    <!--<div style="left: 0;top: 0;">0</div>
+    <div style="left: 50px;top: 50px;">1</div>
+    <div style="left: 100px;top:100px;">2</div>
+    <div style="left: 150px;top: 50px;">3</div>
+    <div style="left: 200px;top:0">4</div>-->
+
+
+    <!--下-->
+    <!--<div style="left: 0;top: 100px;">0</div>
+    <div style="left: 50px;top: 50px;">1</div>
+    <div style="left: 100px;top: 0px;">2</div>
+    <div style="left: 150px;top: 50px;">3</div>
+    <div style="left: 200px;top: 100px">4</div>-->
+
+    <!--左-->
+    <!--<div style="left: 0;top: 0;">0</div>
+    <div style="left: 50px;top: 50px;">1</div>
+    <div style="left: 100px;top: 100px;">2</div>
+    <div style="left: 50px;top: 150px;">3</div>
+    <div style="left: 0px;top: 200px">4</div>-->
+
+    <!--右-->
+    <!--<div style="left: 100px;top: 0;">0</div>
+    <div style="left: 50px;top: 50px;">1</div>
+    <div style="left: 0px;top: 100px;">2</div>
+    <div style="left: 50px;top: 150px;">3</div>
+    <div style="left: 100px;top:200px">4</div>-->
+</div>
+</body>
+</html>
+

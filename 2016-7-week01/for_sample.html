@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        var i;
+        function step0(){
+            i=1;
+            console.log("step 0: i=",i)
+        }
+
+        function step1(){
+            console.log("step 1: ",i,"<10")
+            return i<10;
+        }
+
+        function step2(){
+            console.log("===========外：",i,"=============》")
+            console.log("step 2: print 口诀表")
+            console.log()
+
+            for(var j=1;j<=i;j++){
+                console.log("内：",j," 外：",i)
+            }
+            console.log("《========================")
+
+        }
+
+        function step3(){
+            console.log("step 3: i++")
+            i++;
+        }
+
+        for(step0();step1();step3()){
+            step2();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#box{
+	width:200px;
+	height:200px;
+	border:3px solid #F00;
+}
+</style>
+<script>
+	window.onload=function(){
+		var text=document.getElementById('text');
+		var btn=document.getElementById('btn');
+		var box=document.getElementById('box');
+		btn.onclick=function(){
+			var a=text.value;
+			var li='<li>'+a+'</li>';
+			//box.innerHTML=li;//innerHTML会清空第一次的数值
+			//box.innerHTML=box.innerHTML+li;//原来的内容+新的内容，新的内容在后面
+			box.innerHTML+=li;//上面的代码简写
+			}
+		}
+</script>
+</head>
+
+<body>
+<input type="text" value="" id="text"/>
+<input type="button" value="提交" id="btn"/>
+<ul id="box">
+	<!--<li>window.onload=function(){
+		var text=document.getElementById('text');
+		var btn=document.getElementById('btn');
+		var box=document.getElementById('box');
+		btn.onclick=function(){
+			var val=text.value;
+			var li='<li>'+val+'</li>';
+			box.innerHTML=box.innerHTML+li;
+			}
+		}</li>-->
+</ul>
+</body>
+</html>

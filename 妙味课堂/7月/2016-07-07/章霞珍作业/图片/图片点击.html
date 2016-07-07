@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>图片</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        div {
+            position: relative;
+            width: 600px;
+            height: 330px;
+            margin: 10px auto;
+            padding: 20px;
+            background: #CCC;
+
+        }
+
+        .pot img {
+            display: inline-block;
+            width: 600px;
+            height: 300px;
+        }
+
+        span {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            line-height: 30px;
+            color: #FFF;
+        }
+
+        .left {
+            position: absolute;
+            top: 154px;
+            left: 21px;
+            cursor: pointer;
+        }
+
+        .right {
+            position: absolute;
+            top: 154px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .list {
+            position: absolute;
+            bottom: 0px;
+            left: 158px;
+            width: 300px;
+            height: 50px;
+        }
+
+        .list li {
+            position: relative;
+            float: left;
+            margin: 10px 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #FFF;
+        }
+
+        .list img {
+            border: 2px solid #fff;
+            display: none;
+        }
+
+        .list_1 img {
+            position: absolute;
+            top: -48px;
+            left: -11px;
+        }
+
+        .list_2 img {
+            position: absolute;
+            top: -48px;
+            left: -11px;
+        }
+
+        .list_3 img {
+            position: absolute;
+            top: -48px;
+            left: -11px;
+        }
+
+        .list_4 img {
+            position: absolute;
+            top: -48px;
+            left: -11px;
+        }
+
+        .list_5 img {
+            position: absolute;
+            top: -48px;
+            left: -11px;
+        }
+
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var left = document.querySelector('.left');
+            var right = document.querySelector('.right');
+            var lis = document.querySelectorAll('.list li');
+            var img_x = document.querySelectorAll('.list img');
+            var imgArr = ['img/Chrysanthemum.jpg', 'img/Hydrangeas.jpg', 'img/Jellyfish.jpg', 'img/Desert.jpg', 'img/Koala.jpg'];
+            var img = document.getElementById('only');
+            var n = 0;
+            //点击左侧按钮
+            left.onclick = function () {
+                n--;
+                if (n < 0) {
+                    n = imgArr.length - 1;
+                }
+                img.src = imgArr[n];
+                //当图片走到那，下面的小圆点变成红色
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].style.background = "#fff";
+                }
+                lis[n].style.background = "red";
+            };
+            //点击右侧按钮
+            right.onclick = function () {
+                n++;
+                if (n > imgArr.length - 1) {
+                    n = 0;
+                }
+                img.src = imgArr[n];
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].style.background = "#fff";
+                }
+                lis[n].style.background = "red";
+            }
+            for (var i = 0; i < lis.length; i++) {
+                lis[i].index = i;
+                //鼠标滑到小圆点上的效果
+                lis[i].onmouseover = function () {
+                    //当鼠标滑过li时，让当前的小图显示
+                    for (var i = 0; i < img_x.length; i++) {
+                        //默认清除小图片
+                        img_x[i].style.display = 'none';
+                    }
+                    //移到当前的为显示
+                    img_x[this.index].style.display = 'block';
+
+                }
+                //鼠标点击小圆点，大图会变化
+                lis[i].onclick = function () {
+                    n = this.index;
+                    for (var i = 0; i < lis.length; i++) {
+                        lis[i].style.background = "#fff";
+                    }
+                    this.style.background = "red";
+                    img.src = imgArr[this.index];
+                }
+                //鼠标移出，清除小图片
+                lis[i].onmouseout = function () {
+                    img_x[this.index].style.display = 'none';
+                }
+
+            }
+
+        }
+    </script>
+
+
+</head>
+<body>
+<div>
+    <ul class="pot">
+        <li><img src="img/Chrysanthemum.jpg" id="only"/></li>
+        <!--<li><img src="img/Hydrangeas.jpg"/></li>
+        <li><img src="img/Jellyfish.jpg"/></li>
+        <li><img src="img/Desert.jpg"/></li>
+        <li><img src="img/Koala.jpg"/></li>-->
+    </ul>
+    <span class="left">《</span>
+    <span class="right">》</span>
+    <ul class="list">
+        <li class="list_1" style="background:#F00;"><img src="img/Chrysanthemum.jpg" width="40" height="40"/></li>
+        <li class="list_2"><img src="img/Hydrangeas.jpg" width="40" height="40"/></li>
+        <li class="list_3"><img src="img/Jellyfish.jpg" width="40" height="40"/></li>
+        <li class="list_4"><img src="img/Desert.jpg" width="40" height="40"/></li>
+        <li class="list_5"><img src="img/Koala.jpg" width="40" height="40"/></li>
+    </ul>
+
+</div>
+</body>
+</html>

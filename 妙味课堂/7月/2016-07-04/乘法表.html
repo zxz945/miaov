@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乘法表</title>
+<script>
+window.onload=function(){
+	//获取DIV元素
+	var div=document.getElementsByTagName('div');
+	//首先定义个X=1；当X的数值小于9时，每次加一
+	for(var x=1;x<=9;x++){
+		//在定义个y，初始值为1，当Y的值小于X时，y每次加1;
+		for(var y=1;y<=x;y++){
+			//页面下第1个DIV的内容就等于 y*x=y*x
+			div[0].innerHTML+=y+'*'+x+'='+x*y+' ';
+		}
+		//在第1个div里每行加个<br/>;
+		div[0].innerHTML+='<br/>';
+	}
+};
+</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

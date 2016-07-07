@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload=function(){
+				var lis=document.querySelectorAll("li");
+				
+				for(var i=0;i<lis.length;i++){
+					lis[i].onclick=function(){
+						alert(i);		//5	length
+					};
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>red</li>
+			<li>green</li>
+			<li>blue</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>第一天作业</title>
+<style>
+a:link,a:visited{
+	color:#fff;
+	text-decoration:none;
+	}
+ul{
+	padding:0;
+	margin:0;
+	}
+li{
+	list-style:none;
+	float:left;
+	margin-left:5px;
+
+}
+ p{
+	 width:100px;
+	 height:100px;
+	 border: 2px solid #000;
+	 background:#FFF;
+	 }
+.box{
+	display:none;
+	position:fixed;
+	 top:0;
+	 left:0;
+	 width:100%;
+	 height:100%;
+	 background:rgba(0,0,0,0.7); 
+	}
+.content {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            width: 300px;
+            height: 200px;
+            background: #FFF;
+            padding: 20px 0 20px 20px;
+			border:20px solid rgba(192,192,192,1);
+}
+
+.list_1 {
+            width: 300px;
+            height: 30px;
+            margin-bottom: 10px;
+}
+
+.only {
+            width: 40px;
+            height: 30px;
+            line-height: 30px;
+            color: #FFF;
+            text-align: center;
+        }
+
+.red a:link,.red a:visited{
+	display:inline-block;
+	width:30px;
+	height:30px;
+            background: #F00;
+        }
+.red a:hover{
+            background:#F69;
+        }
+
+
+.yellow a:link,.yellow a:visited{
+	display:inline-block;
+	width:30px;
+	height:30px;
+    background: #F93;
+        }
+.yellow a:hover{
+            background:#FF6;
+        }
+
+.blue a:link,.blue a:visited {
+		display:inline-block;
+	width:30px;
+	height:30px;
+       background: #33C;
+        }
+.blue a:hover{
+	background:#609;
+	}
+
+.gray a:link,.gray a:visited{
+	   display:inline-block;
+       background: #ccc;
+		color: #000;
+		border: 1px solid #666;
+		width: 40px;
+		height: 30px;
+		line-height: 29px;
+		font-size: 12px;
+		margin-right:5px;
+        }
+.gray a:hover{
+	background:#666;
+	}
+
+.btn {
+       margin: 25px 0 0 87px;
+     }
+
+</style>
+<script>
+//页面加载完成后，开始运行括号里的代码
+window.onload=function(){
+//获取页面元素
+	var bg=document.getElementById('box');
+	var btn=document.getElementById('btn_1');
+	var box=document.getElementById('box_1');
+	var red=document.getElementById('red');
+	var yellow=document.getElementById('yellow');
+	var blue=document.getElementById('blue');
+	var num1=document.getElementById('width_1');
+	var num2=document.getElementById('width_2');
+	var num3=document.getElementById('width_3');
+	var num4=document.getElementById('height_1');
+	var num5=document.getElementById('height_2');
+	var num6=document.getElementById('height_3');
+	var hidden=document.getElementById('hidden');
+	var show=document.getElementById('show');
+//按钮点击后，弹出遮罩层
+	btn.onclick=function(){
+		box_1.style.display="block";
+		}
+//当鼠标移入触发区域后，改变DIV的背景色
+	red.onmouseover=function(){
+		bg.style.background="red";
+		}
+	yellow.onmouseover=function(){
+		bg.style.background="yellow";
+		}
+	blue.onmouseover=function(){
+		bg.style.background="blue";
+		}
+//当鼠标移入触发区域后，改变DIV的宽度
+	num1.onmouseover=function(){
+		bg.style.width="200px";
+		}
+	num2.onmouseover=function(){
+		bg.style.width="300px";
+		}
+	num3.onmouseover=function(){
+		bg.style.width="400px";
+		}
+//当鼠标移入触发区域后，改变DIV的高
+	num4.onmouseover=function(){
+		bg.style.height="200px";
+		}
+	num5.onmouseover=function(){
+		bg.style.height="300px";
+		}
+	num6.onmouseover=function(){
+		bg.style.height="400px";
+		}
+//点击恢复按钮，DIV还原的原本的样式
+	hidden.onclick=function(){
+		box.style.display="none";
+		bg.style.width="100px";
+		bg.style.height="100px";
+		bg.style.background="#fff";
+		}
+//点击确认按钮，遮罩层隐藏
+	show.onclick=function(){
+		box.style.display="none";
+		
+		}	
+	}
+</script>
+</head>
+<body>
+请为下面的div设置样式
+<input type="button" value="点击设置样式" id="btn_1"/>
+<p id="box"></p>
+<div class="box" id="box_1">
+    <!--<div class="box_B"></div>-->
+    <div class="content">
+        <ul class="list_1">
+            <li>请选择背景颜色：</li>
+            <li class="red only" id="red"><a href="#">红</a></li>
+            <li class="yellow only" id="yellow"><a href="#">黄</a></li>
+            <li class="blue only" id="blue"><a href="#">蓝</a></li>
+        </ul>
+        <ul class="list_1">
+            <li>请选择宽度(px)：</li>
+            <li class="gray only" id="width_1"><a href="#">200</a></li>
+            <li class="gray only" id="width_2"><a href="#">300</a></li>
+            <li class="gray only" id="width_3"><a href="#">400</a></li>
+        </ul>
+        <ul class="list_1">
+            <li>请选择高度(px)：</li>
+            <li class="gray only" id="height_1"><a href="#">200</a></li>
+            <li class="gray only" id="height_2"><a href="#">300</a></li>
+            <li class="gray only" id="height_3"><a href="#">400</a></li>
+        </ul>
+        <div class="btn">
+            <input type="button" value="恢复" id="hidden"/>
+            <input type="button" value="确定" id="show"/>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

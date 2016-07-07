@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        .box{
+            width: 150px;
+            height: auto;
+            margin: 30px;;
+            border: 1px solid #660099;
+        }
+        h2{
+            cursor: pointer;;
+            background: #CE7B31;
+            height: 30px;
+            line-height: 30px;
+                }
+        ul {
+            background: #ccc;
+            width: 150px;
+            text-align: right;
+            height: 70px;
+            line-height: 30px;
+           border-bottom: 1px solid #000;
+            display: none;
+        }
+        .c2{
+            background: red;
+        }
+        li{
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //
+            var h2 = document.querySelectorAll('h2');
+            var ul=document.querySelectorAll('ul');
+            var li=document.querySelectorAll('li');
+            for (var i = 0; i < h2.length; i++) {
+                h2[i].index=i;
+                ul[i].index=i;
+                h2[i].onclick = function () {
+                    for(var i = 0; i < ul.length; i++){
+                        ul[i].style.display = 'none';
+                        h2[i].style.background='#CE7B31';
+                    }
+                    ul[this.index].style.display = 'block';
+                    h2[this.index].style.background='red';
+                }
+
+            }
+            for(var i=0;i<li.length;i++){
+                li[i].onclick=function(){
+                    for(var i=0;i<li.length;i++){
+                        li[i].style.background='none';
+                    }
+                    this.style.background ="yellow";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="box">
+        <h2> > 我的好友</h2>
+        <ul>
+            <li>刘某某1</li>
+            <li>刘某某2</li>
+        </ul>
+        <h2> > 企业好友</h2>
+        <ul>
+            <li>刘某某1</li>
+            <li>刘某某2</li>
+        </ul>
+        <h2> > 陌生好友</h2>
+        <ul>
+            <li>刘某某1</li>
+            <li>刘某某2</li>
+        </ul>
+</div>
+</body>
+</html>

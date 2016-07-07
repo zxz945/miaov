@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 需求：
+			 * 	点击某一个li,让这个li添加一个背景色
+			 * 
+			 * 分析
+			 * 	1、获取到所有的li
+			 * 	2、for循环
+			 * 		给每个li添加点击事件
+			 * 		让点击的那个li添加一个背景色
+			 */
+			
+			window.onload=function(){
+				//获取到所有的li
+				var lis=document.querySelectorAll('li');
+				
+				/*
+				 * for循环的速度非常快，当点击的时候for肯定是走完了，for走完后i的值变成了5
+				 */
+				//for循环
+				for(var i=0;i<lis.length;i++){
+					//lis[i].style.background='red';
+					lis[i].onclick=function(){
+						//this.style.background='red';
+						lis[i].style.background='red';
+						
+						//console.log(i);
+					};
+				}
+				
+				//当循环走完的时候，i=5;
+			};
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>red</li>
+			<li>blue</li>
+			<li>green</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>

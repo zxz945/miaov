@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="box" id="box"></div>
+		<script>
+			/*
+			 * class	它是一个保留字
+			 * 	如果想要用到class，用className代替
+			 */
+			var box=document.getElementById('box');
+			
+			console.log(box.class)		//undefined
+			console.log(box['class'])	//undefined
+			
+			console.log(box.className)		//box
+			console.log(box['className'])	//box
+		</script>
+	</body>
+</html>

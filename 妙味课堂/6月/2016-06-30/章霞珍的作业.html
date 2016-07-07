@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>06.30号作业</title>
+<style>
+div{
+	width:100px;
+	height:100px;
+	border:3px solid #000;
+	}
+</style>
+<script>
+	window.onload=function(){
+		//获取按钮和DIV元素
+		var btn=document.getElementById('btn');
+		var box=document.getElementById('box');
+		//当点击按钮时
+		btn.onclick=function(){
+			//如果DIV是显示时
+			if(box.style.display=='block'){
+				//让DIV隐藏
+				box.style.display='none';
+				}else{
+					//如果是隐藏，就让显示
+					box.style.display='block'
+					}
+			}
+	}
+</script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn" />
+<div id="box" style="display:block;"></div>
+</body>
+</html>

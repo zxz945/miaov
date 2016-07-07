@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				position: relative;
+			}
+			#box div{
+				width: 50px;
+				height: 50px;
+				background: #f00;
+				color: #fff;
+				text-align: center;
+				line-height: 50px;
+				font-size: 20px;
+				font-weight: bold;
+				position: absolute;
+			}
+		</style>
+		<script>
+			/*
+			 * 已知i的值，以及div的宽度与高度为50，通过以下可以发现，left值与top值都是div宽高的倍数。可以根据倍数乘以宽高就能算出left与top值
+			 * 问题：求倍数（宽的倍数、高的倍数）
+			 * 
+			 * 0	left:0		top:0
+			 * 1	left:50		top:50
+			 * 2	left:100	top:100
+			 * 3	left:150	top:50
+			 * 4	left:200	top:0
+			 * 
+			 * ----------------以下为求left的倍数-------------------
+			 * 
+			 * 0	倍数*50（宽度）=0			倍数=0/50		0
+			 * 1	倍数*50（宽度）=50			倍数=50/50		1
+			 * 2	倍数*50（宽度）=100		倍数=100/50		2
+			 * 3	倍数*50（宽度）=150		倍数=150/50		3
+			 * 4	倍数*50（宽度）=200		倍数=200/50		4
+			 * 
+			 * 求left的倍数
+			 * 	推出left的倍数后，发现与i相等，可以让left的倍数等于i
+			 * 
+			 * 
+			 * 
+			 * ----------------以下为求top的倍数-------------------
+			 * 
+			 * 0	倍数*50（高度）=0			倍数=0/50		0
+			 * 1	倍数*50（高度）=50			倍数=50/50		1
+			 * 2	倍数*50（高度）=100		倍数=100/50		2
+			 * 3	倍数*50（高度）=50			倍数=50/50		1
+			 * 4	倍数*50（高度）=0			倍数=0/50		0
+			 * 
+			 * 求top的倍数
+			 * 	得出top的倍数为0 1 2 1 0
+			 * 
+			 */
+			
+			window.onload=function(){
+				var box=document.getElementById('box');
+				var html='';		//这个变量存div
+				
+				var l=0;	//left的倍数
+				var t=-1;	//top的倍数，为了能加一次得到0，所以初始值给成-1
+				
+				//自动生成div，用for
+				for(var i=0;i<5;i++){
+					//循环的时候给html添加内容（div）
+					//在生成的时候就可以直接给每个div添加left与top
+					
+					
+					l=i;	//left的倍数与i相等
+					
+					/*
+					 * i		0 1 2 3 4
+					 * t		0 1 2 1 0
+					 * 当i走前三次的时候，t的值与i相等
+					 * 当i从第四次开始，t的值与i不相等
+					 */
+					
+					if(i<3){
+						//t=i;
+						t++;	//0 1 2
+					}else{
+						t--;	//1 0
+					}
+					
+					
+					html+='<div style="left:'+l*50+'px;top:'+t*50+'px"></div>';
+				}
+				
+				//把生成的div放到页面中
+				box.innerHTML=html;
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="生成v字型" />
+		<div id="box">
+			<!--上-->
+			<!--<div style="left: 0;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top:100px;">2</div>
+			<div style="left: 150px;top: 50px;">3</div>
+			<div style="left: 200px;top:0">4</div>-->
+			
+			
+			<!--下-->
+			<!--<div style="left: 0;top: 100px;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top: 0px;">2</div>
+			<div style="left: 150px;top: 50px;">3</div>
+			<div style="left: 200px;top: 100px">4</div>-->
+			
+			<!--左-->
+			<!--<div style="left: 0;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 100px;top: 100px;">2</div>
+			<div style="left: 50px;top: 150px;">3</div>
+			<div style="left: 0px;top: 200px">4</div>-->
+			
+			<!--右-->
+			<!--<div style="left: 100px;top: 0;">0</div>
+			<div style="left: 50px;top: 50px;">1</div>
+			<div style="left: 0px;top: 100px;">2</div>
+			<div style="left: 50px;top: 150px;">3</div>
+			<div style="left: 100px;top:200px">4</div>-->
+		</div>
+	</body>
+</html>
+

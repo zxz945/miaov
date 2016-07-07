@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" style="background: #f00; font-size: 14px; color: #fff; font:italic small-caps bold 12px/1.2em Arial" />
+		<script>
+			/*
+			 * 属性操作的方法
+			 * 	1、.		的	取到对应属性的值
+			 * 		如果想用点操作符获取复合属性，那把横杠去掉，把横杠后面的首字母大写
+			 * 	2、[]	的	取到对应属性的值，但是它可以取复合属性
+			 * 
+			 * 
+			 * 需求：
+			 * 	在控制台中把input的属性打印出来
+			 * 
+			 * 分析：
+			 * 	1、拿到input
+			 * 		document.getElementById('btn')
+			 * 	2、在控制台中打印属性
+			 * 		打印：console.log(input的属性)
+			 * 			input的属性:
+			 * 				id		input.id(属性名)
+			 * 				type	input.type(属性名)
+			 * 
+			 */
+			
+			
+			var input=document.getElementById('btn');
+			
+			console.log(input.id);			//btn
+			console.log(input.type);		//button
+			console.log(input['value']);	//按钮
+			
+			
+			/*
+			console.log(input.style.font-size)	//报错
+			console.log(input.style.font)		//
+			console.log(input.style.fontsize);	//undefined
+			
+			font-size	js不认识-,所以报错
+			font		css里必需书写规范，才可以获取到
+			fontsize	这个属性在css里是不存在的，所有undefined
+			*/
+			
+			
+			//console.log(input.style['font-size']);
+			console.log(input.style.fontSize);
+		</script>
+	</body>
+</html>

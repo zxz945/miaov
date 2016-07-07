@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				margin-bottom: 10px;
+			}
+			li{
+				list-style: none;
+				height: 30px;
+				line-height: 30px;
+				margin-bottom: 1px;
+			}
+			span{
+				display: inline-block;
+				width: 150px;
+			}
+			#box{
+				width: 400px;
+				margin: 0 auto;
+			}
+			.c1{
+				background: #00f;
+			}
+			.c2{
+				background: #0f0;
+			}
+			.c3{
+				background: #ff0;
+			}
+			.c4{
+				background: #f00;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var lis=document.querySelectorAll("li");
+				var inputs=document.querySelectorAll("ul input");
+				var selectALL=document.getElementById("selectALL");
+				var cn=0;	//代表选中的数量
+				
+				/*console.dir(lis);
+				console.dir(inputs);*/
+				
+				
+				//console.log(4%2);
+				//alert(inputs.length);
+				
+				for(var i=0;i<lis.length;i++){
+					lis[i].index=i;		//给li添加一个索引值
+					inputs[i].index=i;	//给inputs添加一个索引值
+					//隔行变色
+					if(i%2==0){
+						//偶数
+						lis[i].className='c1';
+						lis[i].bg='c1';	//把自己身上的原始颜色值存一下
+					}else{
+						//奇数
+						lis[i].className='c2';
+						lis[i].bg='c2';	//把自己身上的原始颜色值存一下
+					}
+					
+					
+					lis[i].onmouseover=function(){
+						/*
+						 * 在鼠标移入li的时候，需做两件事
+						 * 	1、如果它对应的input是选中的
+						 * 		让它的颜色值为c4
+						 * 	2、如果它对应的input是没选中的
+						 * 		让它的颜色值为c3
+						 */
+						
+						if(inputs[this.index].checked==true){
+							//这个条件成立说明，对应的input是选中的
+							this.className='c4';
+						}else{
+							//这个条件成立说明，对应的input是没选中的
+							this.className='c3';
+						}
+					};
+					
+					lis[i].onmouseout=function(){
+						/*
+						 * 在鼠标移出li的时候，需做两件事
+						 * 	1、如果它对应的input是选中的
+						 * 		让它的颜色值为c4
+						 * 	2、如果它对应的input是没选中的
+						 * 		让它的颜色值为最初的颜色
+						 */
+						if(inputs[this.index].checked==true){
+							//这个条件成立说明，对应的input是选中的
+							this.className='c4';
+						}else{
+							//这个条件成立说明，对应的input是没选中的
+							this.className=this.bg;
+						}
+					};
+					
+					
+					//点击的时候颜色也要换
+					inputs[i].onclick=function(){
+						//点击的时候换颜色
+						lis[this.index].className='c4';
+						
+						if(this.checked==true){
+							//这个条件成立，说明当前的input选中了
+							cn++;
+						}else{
+							//这个条件成立，说明当前的input没选中
+							cn--;
+						}
+						
+						console.log(cn);
+						
+						if(cn==lis.length){
+							//这个条件成立，说明全部选中了
+							selectALL.checked=true;
+						}else{
+							//这个条件成立，说明至少有一个没选中
+							selectALL.checked=false;
+						}
+						
+					};
+					
+					
+					
+				}
+				
+				
+				//全选按钮点击
+				selectALL.onclick=function(){
+					
+					if(this.checked==true){
+						cn=lis.length;
+					}else{
+						cn=0;
+					}
+					
+					for(var i=0;i<inputs.length;i++){
+						/*if(this.checked==true){
+							inputs[i].checked=true;
+						}else{
+							inputs[i].checked=false;
+						}*/
+						
+						inputs[i].checked=this.checked;
+						
+						if(inputs[i].checked){
+							//这个条件成立。说明全选中
+							lis[i].className='c4';
+							
+							
+						}else{
+							lis[i].className=lis[i].bg;
+							
+						}
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><input type="checkbox" /><span>私奔</span><span>梁博</span></li>
+				<li><input type="checkbox" /><span>北京北京</span><span>梁博、黄勇</span></li>
+				<li><input type="checkbox" /><span>我爱你中国</span><span>梁博</span></li>
+				<li><input type="checkbox" /><span>私奔</span><span>梁博</span></li>
+				<li><input type="checkbox" /><span>北京北京</span><span>梁博、黄勇</span></li>
+				<li><input type="checkbox" /><span>我爱你中国</span><span>梁博</span></li>
+			</ul>
+			<input type="checkbox" id="selectALL" value="" />全选
+		</div>
+	</body>
+</html>

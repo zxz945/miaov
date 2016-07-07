@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乘法表</title>
+<script>
+window.onload=function(){
+	//获取DIV的元素
+	var div=document.getElementsByTagName('div');
+	//获取的行数
+	//1.2,3,4,5,6,7,8,9
+	for(var i=1;i<10;i++){
+		//获取的是行数里面的具体数字
+		//1,2,3,4,5,6,7,8,9
+/*步骤：i=1;小于10.条件成立，走第二个for里面的j=1；j<=i;条件成立；走第二个for里面的内容，DIV的innerHtml等于1*1;第二个括号内容执行完，J++,变成2,2大于i，跳出第二个for,执行第一个for,i++等于2，首先J等于一，就让J*2，之后++,j变成2,2*2，j++又变成3，跳出到大FOR，i++变成3，j的初始值是1，就1*3，当J小于2，每次加一，在乘以I，递增，每次循环*/
+        
+		for(var j=1;j<=i;j++){
+			div[0].innerHTML+=j+'*'+i+'='+ j*i +'  ';
+		}
+		div[0].innerHTML+='<br/>';
+	}
+	
+
+};
+</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

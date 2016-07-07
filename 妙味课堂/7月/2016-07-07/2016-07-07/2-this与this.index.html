@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			window.onload=function(){
+				/*
+				 * this				对象（元素）（标签）
+				 * this.index		数字
+				 */
+				
+				var lis=document.querySelectorAll("li");
+				
+				for(var i=0;i<lis.length;i++){
+					lis[i].index=i;		//自定义属性，指的是0-4
+					lis[i].onclick=function(){
+						//console.log(i);	5
+						
+						console.log(i,this.index);
+					};
+				}
+				
+				
+				/*var on=true;
+				btn.onclick=function(){
+					if(on){
+						this.className='active';
+					}else{
+						this.className='';
+					}
+					
+					on=false;
+					
+					
+					
+					if(on){
+						this.className='active';
+						on=false;
+					}else{
+						this.className='';
+						on=true;
+					}
+					
+				}*/
+			};
+		</script>
+	</head>
+	<body>
+		<ul id="list">
+			<li>red</li>
+			<li>green</li>
+			<li>blue</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>

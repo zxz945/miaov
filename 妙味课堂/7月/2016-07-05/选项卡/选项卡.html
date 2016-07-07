@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        div{width: 200px;height: 200px;border: 1px solid #3333CC;display: none;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+			//获取按钮和DIV
+			var inputs=document.querySelectorAll('input');
+            var divs=document.querySelectorAll('div');
+			//默认第一次为最后一次
+			var last=inputs[0];
+			//获取按钮的长度为i,如果小于3，每次加一
+            for(var i=0;i<inputs.length;i++){
+				//自定义一个属性，让inputs[i].index=i;
+				inputs[i].index=i;
+				//点击按钮
+				inputs[i].onclick=function(){
+					//循环按钮和DIV，清空它们当前的样式
+					for(var i=0;i<inputs.length;i++){
+						 inputs[i].style.background='none';
+					     divs[i].style.display='none';
+					}
+					//定义当前点击的按钮背景颜色和样式
+					this.style.background='#FF6699';
+					divs[this.index].style.display='block';
+				}
+            }
+        }
+    </script>
+</head>
+
+<body>
+<input type="button" value="按钮一" style="background:#FF6699; "/>
+<input type="button" value="按钮二"/>
+<input type="button" value="按钮三"/>
+<div style="display: block;">内容一</div>
+<div>内容二</div>
+<div>内容三</div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{
+	padding:0;
+	margin:0;
+	}
+.box{
+	width:470px;
+	height:auto;
+	}
+li{
+	padding:10px 30px 10px 20px;
+	height:20px;
+	list-style:none;
+	}
+.list_1{
+	background:#F00;
+	}
+font{
+	float:right;
+	}
+p{
+	margin:5px 0 0 15px;
+	}
+	.cl{
+		background:#FF6699 ;
+	}
+	.c2{
+		background: #CCCCCC;
+	}
+	.c3{
+		background: #CE7B31;
+	   }
+	.c4{
+		background: #660099;
+	}
+</style>
+<script>
+ window.onload=function(){
+	var lis=document.querySelectorAll('.box li');
+	 var inputs=document.querySelectorAll('.box input')
+    var only=document.getElementById('only');
+	 var cn=0;
+	 //获取所有的inputs的个数
+	 for(var i=0;i<lis.length;i++){
+		 lis[i].index=i;
+		 inputs[i].index=i;
+
+
+		 //判断当前inputs是奇数还是偶数
+		 if(i%2==0){
+			 //没有事件就不能用this,this要和事件绑定
+			 //lis[this.index].className='c1';
+            lis[i].className='c1';
+		    lis[i].bg='c1';
+		 }else{
+			 lis[i].className='c2';
+			 lis[i].bg='c2';
+		 }
+		 //判断是否选中
+		 inputs[i].onclick=function(){
+				 if(this.checked==true){
+					 cn++;
+				 }else {
+					 cn--;
+				 };
+			 //判断如果cn的数值等于li的长度值，only为选中状态
+			 if(cn==lis.length){
+				 only.checked=true;
+			 }else{
+				 //数值不一样，就是不选中状态
+				 only.checked=false;
+			 }
+		 }
+		 //当鼠标移入
+		 lis[i].onmouseover=function() {
+			 //改变当前的li的背景颜色
+			 if(inputs[this.index].checked==true){
+			 	 this.className='c4';
+			  }else {
+			 	 this.className='c3';
+			  }
+		 }
+		 //鼠标移出
+		 lis[i].onmouseout=function(){
+			 //鼠标移出等于最初的背景颜色
+			 this.className=this.bg;
+			 if(inputs[this.index].checked==true){
+				 this.className='c4';
+			 }else {
+				 this.className=this.bg;
+			}
+		 }
+	 }
+	 //点击全部选中
+    only.onclick=function(){
+		for(var i=0;i < inputs.length;i++){
+			inputs[i].checked=this.checked;
+			lis[i].className='c4';
+			if(this.checked==true){
+				lis[i].className='c4';
+			}else {
+				lis[i].className=lis[i].bg;
+			}
+		}
+
+
+	}
+ };
+</script>
+</head>
+
+<body>
+<ul class="box">
+	<li ><input type="checkbox" /> 张三的歌 <font>蔡琴</font></li>
+    <li ><input type="checkbox"/> 张三的歌 <font>蔡琴</font></li>
+    <li><input type="checkbox"/> 张三的歌 <font> 蔡琴</font></li>
+    <li><input type="checkbox"/> 张三的歌 <font>蔡琴</font></li>
+    <li><input type="checkbox"/> 张三的歌 <font>蔡琴</font></li>
+    <li><input type="checkbox"/> 张三的歌 <font> 蔡琴</font></li>
+</ul>
+<p><input type="checkbox" id="only"/> 全部选中</p>
+</body>
+</html>

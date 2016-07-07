@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * document.getElementById
+			 * 	通过id名称去获取一个元素，它只有一个主语，document
+			 * 	它前面只能放document
+			 * 
+			 * 	
+			 * getElementsByTagName(标签名)
+			 * 	通过标签名去获取一组元素
+			 * 	主语（限制了范围）：
+			 * 		document	从整个文档中去获取元素
+			 * 		父级			从父级下获取元素
+			 * 
+			 * 	获取到的是一个集合，类数组。
+			 * 	类数组：类似数组，但是数组当中的一些方法，它不具备
+			 * 			它只具备数组中的length属性，以及每个数据都有一个对应的下标
+			 * 	取某个数据用的方法就是数组的下标
+			 * 	
+			 * 	
+			 * 
+			 */
+			window.onload=function(){
+				var blue=document.getElementById('blue');
+				blue.style.background='blue';
+				
+				var lis=document.getElementsByTagName('li');
+				console.dir(lis);
+				
+				lis[0].style.background='red';
+				lis[3].style.background='yellow';
+				
+				
+				var color=document.getElementById('color');
+				//从ul身上去获取它里面的li
+				var lis2=color.getElementsByTagName('li');
+				
+				
+				console.dir(lis2);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="color">
+			<li>red</li>
+			<li>green</li>
+			<li id="blue">blue</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+		<ul>
+			<li>red</li>
+			<li>green</li>
+			<li id="blue">blue</li>
+			<li>yellow</li>
+			<li>pink</li>
+		</ul>
+	</body>
+</html>

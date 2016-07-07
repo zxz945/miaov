@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #f00;
+			}
+		</style>
+		<script>
+			/*
+			 * window.onload	页面加载完成
+			 * 
+			 * 语法：
+			 * window.onload=function(){
+			 * 	在页面加载完成后，会执行这里的代码
+			 * }
+			 * 
+			 * 
+			 * 什么时候用
+			 * 	当我需要获取元素，而我的script标签是在元素前面，这个时候去用window.onload
+			 */
+			
+			
+			window.onload=function(){
+				//代表以下代码会在页面全部加载完成后执行
+				document.getElementById('btn').onclick=function(){
+					document.getElementById('box').style.width='200px';
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="按钮" />
+		<script>
+			alert(document.getElementById('box'))
+		</script>
+		<div id="box"></div>
+	</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+		#container {
+			height: 620px;
+			width: 300px;
+			background: url("img/mobile.png") no-repeat center center;
+			margin: auto;
+			position: relative;
+		}
+		#content {
+			height: 375px;
+			width: 236px;
+			position: absolute;
+			top: 100px;
+			left: 32px;
+			overflow: scroll;
+		}
+		#footer {
+			margin: 0;
+			position: absolute;
+			left: 32px;
+			bottom: 100px;
+			background: #eee;
+			border-top: 1px solid gray;
+			border-bottom: 1px solid gray;
+			width: 236px;
+			text-align: center;
+			display: inline;
+			line-height: 39px;
+		}
+		#avatar {
+			width: 24px;
+			height: 24px;
+			border: 1px solid gray;
+			border-radius: 5px;
+			padding: 2px;
+			vertical-align: middle;
+			cursor: pointer;
+
+		}
+		#message {
+			height: 23px;
+			width: 140px;
+			font-size: 12px;
+			vertical-align: middle;
+		}
+		#send {
+			border: 1px solid gray;
+			padding: 5px;
+			vertical-align: middle;
+			border-radius: 5px;
+			font-size: 14px;
+			color: gray;
+			text-decoration: none;
+			cursor: pointer;
+		}
+		#content p {
+			margin: 2px;
+		}
+		#content span {
+			font-size: 14px;
+			display: inline-block;
+			padding: 5px;
+			border: 1px solid gray;
+			border-radius: 5px;
+			margin: 3px;
+			max-width: 160px;
+			vertical-align: top;
+			word-wrap: break-word;
+		}
+		#content img {
+			height: 24px;
+			width: 24px;
+			border: 1px solid gray;
+			border-radius: 5px;
+			padding: 2px;
+			margin: 3px;
+			vertical-align: top;
+		}
+	</style>
+	<script>
+		/*
+		 * 需求：
+		 * 	1、点击头像可以切换
+		 * 	2、点击发送可以把输入的内容放到上面的div里
+		 * 		根据头像不同，样式也不同
+		 * 
+		 * 
+		 * 分析：
+		 * 	1、获取元素（头像、输入框、按钮、div）
+		 * 	2、给头像添加点击事件
+		 * 		切换头像（图片地址）
+		 * 	3、给按钮添加点击事件
+		 * 		1、拿到输入的内容
+		 * 		2、拿到头像
+		 * 		3、把拿到的内容放到div中，根据头像不同，显示不同的样式
+		 */
+		
+		window.onload=function(){
+			//获取元素
+			var avatar=document.getElementById('avatar');
+			var send=document.querySelector('#footer a');
+			var input=document.querySelector("input");
+			var content=document.getElementById('content');
+			
+			
+			var on=true;
+			avatar.onclick=function(){
+				//点击的时候要切换头像（图片src）
+				if(on){
+					avatar.src="img/2.png";
+					on=false;
+				}else{
+					avatar.src="img/1.png";
+					on=true;
+				}
+			};
+			
+			//发送信息
+			send.onclick=function(){
+				/*
+				 * 第一步，要拿到头像与输入的内容
+				 * 第二步，把拿到的内容放到已有结构里，再用innerHTML的方法把结果放到div当中
+				 */
+				
+				
+				if(on){
+					//说明图片现在是1.jpg，要让内容显示在右边
+					//alert(avatar.src);
+					
+					content.innerHTML='<p style="text-align: right"><span style="background: #eee">'+input.value+'</span><img src="img/1.png"></p>'+content.innerHTML;
+				}else{
+					content.innerHTML='<p style="text-align: left"><img src="img/2.png"><span style="background: #36ff07">'+input.value+'</span></p>'+content.innerHTML;
+				}
+				
+				
+				
+				/*var img=avatar.src;
+				var text=input.value;
+				//console.log(text);
+				
+				content.innerHTML='<p style="text-align: left"><img src="'+img+'"><span style="background: #36ff07">'+text+'</span></p>'*/
+			}
+		};
+		
+	</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="content">
+				<!--<p style="text-align: left"><img src="img/2.png"><span style="background: #36ff07">erqwerqwer</span></p>
+				<p style="text-align: right"><span style="background: #eee">asdfasdfasd</span><img src="img/1.png"></p>-->
+			</div>
+			<p id="footer">
+				<img id="avatar" src="img/1.png">
+				<input id="message" type="text" placeholder="选头像、输文字、点发送">
+				<a id="send" href="javascript:">发送</a>
+			</p>	
+		</div>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img{
+				display: block;
+			}
+		</style>
+		<script>
+			/*
+			 * 需求：点击下一张按钮，图片切换到一下张图
+			 * 		点击上一张按钮，图片切换到上一张图
+			 * 
+			 * 分析：
+			 * 	1、获取到下一张按钮、图片
+			 * 	2、给按钮添加一个点击事件
+			 * 		让图片切换
+			 * 
+			 * 累加
+			 * 	n=n+1
+			 * 	n+=1
+			 * 	n++
+			 * 	以上三种都代表一样的结果
+			 */
+			
+			window.onload=function(){
+				//获取元素
+				var next=document.getElementById('next');
+				var pic=document.getElementById('pic');
+				var n=1;
+				
+				//给按钮添加点击事件
+				next.onclick=function(){
+					//n=n+1;	//看到等号的时候，js会先走等号右边的内容，算完后，再赋值
+					//n+=1;
+					n++;
+					
+					if(n>4){
+						n=4;
+					}
+					
+					//console.log(pic.src);	//http://127.0.0.1:8020/2016-06-29JS%E7%8F%AD/2016-07-01/img/4.jpg
+					
+					//alert(n);
+					
+					pic.src='img/'+n+'.jpg';
+					
+				};
+				
+			};
+		</script>
+	</head>
+	<body>
+		<input type="button" id="prev" value="上一张" />
+		<input type="button" id="next" value="下一张" />
+		<img id="pic" src="img/1.jpg"/>
+	</body>
+</html>
+
+
+
+
+

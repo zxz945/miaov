@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" />
+<title> </title>
+<style>
+ul,li{list-style:none;padding:0;margin:0;}
+ul{position:absolute;top:16px;left:105px;}
+li{float:left;}
+li img{width:25px;height:25px;}
+p{display:none;}
+
+
+
+</style>
+<script >
+/*
+思路：
+1、每个星星增加索引值。
+2、变量n，记录鼠标点击时，是哪个星星。n变量一开始的值是-1
+3、当鼠标移入时，根据移入时的this.index。
+   小于this.index的星星变换颜色（小于等于2，蓝色。大于2是黄色），
+   大于this.index的星星为灰色
+
+4、当鼠标移开时，根据n值。（n值是记录哪个星星被点击了）
+	同样使用fn1函数。移开时，小于n值的星星有颜色，大于n值的星星为灰色。
+
+*/
+
+window.onload=function(){
+	var oUl=document.getElementsByTagName('ul')[0];
+	var aImg=oUl.getElementsByTagName('img');
+	var oP=document.getElementsByTagName('p')[0];
+	var oTips=document.getElementById('tips');
+	var arr=['很差','较差','还行','推荐','力荐'];
+	var n=-1;
+	
+	for (var i=0;i<aImg.length ;i++ )
+	{	
+		aImg[i].index=i;
+		aImg[i].onmouseover=function(){
+			oTips.style.display='none';//隐藏说明图片
+			oP.style.display='block';
+			fn1(this.index);
+		}
+
+		aImg[i].onmouseout=function(){
+			if (n==-1)
+			{	
+				oTips.style.display='block';//若没有选中，则鼠标移开时，提示要出来
+				oP.style.display='none';
+			}
+			fn1(n);
+		}  
+
+		aImg[i].onclick=function(){
+			n=this.index;
+		}
+	}
+
+
+	function fn1(index){
+		if (index<2)//两颗星
+		{	
+			for (var i=0;i<index+1 ;i++ )
+			{
+				aImg[i].src='img/blue.jpg';
+			}
+			
+		}  
+		else  //超过两颗星
+		{	
+			for (var i=0;i<index+1 ;i++ )
+			{
+				aImg[i].src='img/yellow.jpg';
+			}
+		}
+
+		for (var i=index+1;i<aImg.length ;i++ )  //大于index的星星为灰色
+			{
+				aImg[i].src='img/grey.jpg';
+			}
+		oP.innerHTML=arr[index];
+	}
+}
+
+
+
+</script>
+</head>
+
+ <BODY>
+
+  <h3>总体评价：</h3>
+  <ul>
+	<li><img src="img/grey.jpg"/></li>
+	<li><img src="img/grey.jpg"/></li>
+	<li><img src="img/grey.jpg"/></li>
+	<li><img src="img/grey.jpg"/></li>
+	<li><img src="img/grey.jpg"/></li>
+  </ul>
+  <p>较差</p>
+  <img id="tips" src="img/tips.jpg"/>
+
+ </BODY>
+</HTML>

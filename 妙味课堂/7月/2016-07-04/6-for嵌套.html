@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			 * 有嵌套的循环，里层的循环没有走完的话，外面的循环是不会走的
+			 * 外面循环走一次，里面的循环要走完所有，这样才会进行外面的第二次循环
+			 * 
+			 * 如果有嵌套的循环，两个声明的变量不能重名
+			 */
+			
+			/*for(var i=0;i<3;i++){
+				//0 1
+				for(var j=0;j<3;j++){
+					//0 1 2
+					console.log(i);	//0 0 0
+				}
+			}*/
+			
+			
+			for(var i=0;i<3;i++){
+				for(var i=0;i<3;i++){
+					console.log(i);	//0 1 2
+				}
+			}
+			
+			
+			alert(i);	//4
+		</script>
+	</body>
+</html>
